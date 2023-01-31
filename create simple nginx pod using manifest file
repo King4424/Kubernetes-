@@ -1,0 +1,19 @@
+nano nginxpod.yml
+<<
+apiVersion: v1
+kind: Pod
+metadata:
+     name: mynginxpod
+
+spec:
+   containers:
+      - image: nginx
+        name: mynginxcontainer
+        ports:
+         - containerPort: 80
+>>
+kubectl apply -f nginxpod.yml
+kubectl get pods
+(from this file formate we can not access nginx from browser for that we have to create 'services')
+kubectl exec -it <pod name> bash
+curl localhost
