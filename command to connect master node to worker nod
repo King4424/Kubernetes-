@@ -1,1 +1,1 @@
-kubeadm tocken create --print-join-command (this command will print a tocken which we have to paste on worker nod)
+kubeadm tocken create --print-join-command (this command will print a tocken which we have to paste on worker node)
