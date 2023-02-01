@@ -1,0 +1,24 @@
+ nano livenessprobe.yml
+ <<
+ apiVersion: v1
+kind: Pod
+metadata:
+    name: mynginxpod
+    labels:
+       env: development
+       app: facebook
+
+spec:
+  containers:
+     - image: nginx
+       name: livenesscontainer
+       ports:
+        - containerPort: 80
+       livenessProbe:
+               httpGet:
+                  path: /
+                  port: 80
+               initialDelaySeconds: 10
+>>
+kubectl apply -f livenessprobe.yml
+kubectl get pods
