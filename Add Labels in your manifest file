@@ -1,0 +1,18 @@
+nano nginxpodlabel.yml
+<<
+apiVersion: v1
+kind: Pod
+metadata:
+   name: mynginxlabel
+   labels:
+      env: development
+      app: facebook
+spec:
+  containers:
+    - image: nginx
+      name: mynginxcontainer
+      ports:
+       - containerPort: 80
+>>
+kubectl apply -f nginxpodlabel.yml
+kubectl get pods --show-labels
