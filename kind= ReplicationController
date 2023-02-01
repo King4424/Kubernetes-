@@ -1,0 +1,28 @@
+nano replicationcontrollerpod.yml
+<<
+apiVersion: v1
+kind: ReplicationController
+metadata:
+    name: mynginxpodrc
+
+spec:
+  replicas: 3
+  template:
+    metadata:
+        labels:
+           app: development
+    spec:
+      containers:
+          - name: mynginxcontainer
+            image: nginx
+            ports:
+              - containerPort: 80
+            livenessProbe:
+                    httpGet:
+                       path: /
+                       port: 80
+                    initialDelaySeconds: 10
+>>
+kubectl apply -f  replicationcontrollerpod.yml
+kubectl get pods --show-labels -o wide
+kubectl scale --replicas=5 -f replicationcontrollerpod.yml     <--(if we want to change replica count by command use this command)
