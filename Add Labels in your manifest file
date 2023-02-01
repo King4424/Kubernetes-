@@ -16,3 +16,4 @@ spec:
 >>
 kubectl apply -f nginxpodlabel.yml
 kubectl get pods --show-labels
+kubectl label pod (pod name) app=insta    <--(when we want to change labels by using command use this command, it will over right ur labels)
